@@ -12,7 +12,7 @@ public class Server {
     }
 
     public void startServer() throws IOException {
-        ServerSocket serverSocket = new ServerSocket(6000);
+        ServerSocket serverSocket = new ServerSocket(6000, 2000);
         service.onStartService(serverSocket);
 
         while (true) {
