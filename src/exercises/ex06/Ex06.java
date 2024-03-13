@@ -18,24 +18,14 @@ public class Ex06 extends Service {
 
     @Override
     public void onConnection(Socket socket) throws IOException {
-        try (
-                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        ) {
-            int in = Integer.parseInt(reader.readLine());
+        int in = Integer.parseInt(reader.readLine());
 
-            System.out.println(socket.getInetAddress() + ": " + in);
+        System.out.println(socket.getInetAddress() + ": " + in);
 
-            int newTotal = addToCount(in);
-            IOStreamUtils.writeLines(writer, newTotal);
-            System.out.println("New count: " + newTotal);
-        }
-    }
+        int newTotal = addToCount(in);
+        IOStreamUtils.writeLines(writer, newTotal);
+        System.out.println("New count: " + newTotal);
 
-    @Override
-    public void onError(IOException e) {
-        System.err.println("Error! Closing connection.");
-        System.err.println(e.toString());
     }
 
     private synchronized int addToCount(int n) {

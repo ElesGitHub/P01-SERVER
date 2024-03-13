@@ -24,7 +24,9 @@ public class Server {
     private void launchTask(Socket socket) {
         new Thread(() -> {
             try {
+                service.setIOStreams(socket.getInputStream(), socket.getOutputStream());
                 service.onConnection(socket);
+                service.closeIOStreams();
             } catch (IOException e) {
                 service.onError(e);
             }
