@@ -1,19 +1,18 @@
-package exercises;
+package exercises.ex06;
 
-import network.Service;
+import network.server.Service;
 import utils.IOStreamUtils;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Ex06 implements Service {
+public class Ex06 extends Service {
     private volatile int count;
 
     @Override
     public void onStartService(ServerSocket serverSocket) {
-        System.out.println("Service started at port: " + serverSocket.getLocalPort());
-
+        super.onStartService(serverSocket);
         count = 0;
     }
 

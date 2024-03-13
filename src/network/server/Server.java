@@ -1,4 +1,4 @@
-package network;
+package network.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -12,7 +12,7 @@ public class Server {
     }
 
     public void startServer() throws IOException {
-        ServerSocket serverSocket = new ServerSocket(6000, 2000);
+        ServerSocket serverSocket = new ServerSocket(6000);
         service.onStartService(serverSocket);
 
         while (true) {
